@@ -1,0 +1,34 @@
+{
+	"ky0lMaUI5QkOuOnXI": {
+		"cols": [{
+			"id": "dim_date-mon_yy",
+			"alias": "dim_date-mon_yy",
+			"aggregate": [{
+				"func": "range",
+				"upper_bound": null,
+				"lower_bound": null
+			}],
+			"name": "Mon Yy"
+		}, {
+			"prepared_id": "fa1be586-afff-44e0-92ae-43c12588b4dd"
+		}],
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mon_yy",
+			"period": "year",
+			"start": 0,
+			"count": 1,
+			"allow_empty": true,
+			"to_date": false
+		}, {
+			"field": "dim_merchant-merchant_network",
+			"op": "eq",
+			"values": ["US"]
+		}],
+		"totals": false,
+		"offset": 0,
+		"currency": "USD",
+		"limit": 500,
+		"format": "json"
+	}
+}

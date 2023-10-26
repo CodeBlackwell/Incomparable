@@ -1,0 +1,540 @@
+{
+  "edw2_request_object": {
+    "edw2_total_cost": {
+      "cols": [
+        {
+          "id": "dim_date-mm_dd_yyyy",
+          "name": "Day",
+          "alias": "mm_dd_yyyy",
+          "aggregate": [
+            {
+              "func": "range"
+            }
+          ]
+        },
+        {
+          "id": "calculation",
+          "calc": "sale+incentive+ppb",
+          "fact": true,
+          "name": "Total Cost",
+          "vars": {
+            "cpc": {
+              "id": "fact_cpc_earning-affiliate_earnings",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "ppb": {
+              "id": "fact_ppb_earning-bid_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "ncpc": {
+              "id": "fact_cpc_earning-network_earnings",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "nppb": {
+              "id": "fact_ppb_earning-network_commission",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "sale": {
+              "id": "fact_order_commission-sale_commission_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "bonus": {
+              "id": "fact_order_bonus-bonus_commission_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "nsale": {
+              "id": "fact_order_commission-network_commission_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "nbonus": {
+              "id": "fact_order_bonus-bonus_network_commission_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "incentive": {
+              "id": "fact_order_commission-incentive_commission_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "adjustment": {
+              "id": "fact_order_commission_adjustment-order_commission_adjustment_amount",
+              "required_groups": [
+                "commission"
+              ]
+            },
+            "nadjustment": {
+              "id": "fact_order_commission_adjustment-network_commission_adjustment_amount",
+              "required_groups": [
+                "commission"
+              ]
+            }
+          },
+          "alias": "total_commission",
+          "format": "money"
+        }
+      ],
+      "report_name": "Custom Report",
+      "format": "json",
+      "filters": [
+        {
+          "field": "dim_date-mm_dd_yyyy",
+          "op": "relative_date",
+          "values": [
+          ],
+          "alias": "date_filter1",
+          "allow_empty": true,
+          "to_date": false,
+          "count": 30,
+          "start": -1,
+          "period": "day"
+        },
+        {
+          "field": "dim_merchant-merchant_uuid",
+          "op": "eq",
+          "values": [
+            "e295c418-295a-447c-b265-734e25f82503"
+          ],
+          "alias": "merchant_filter1"
+        }
+      ],
+      "partitions": [
+      ],
+      "sort": [
+      ],
+      "totals": false,
+      "widths": false,
+      "counts": false,
+      "partitionLimit": 4,
+      "offset": 0,
+      "currency": "NATIVE",
+      "partitionOffset": 0,
+      "limit": 500
+    }
+  },
+  "edw3_request_object": {
+    "edw3_total_cost": {
+      "cols": [
+        {
+          "id": "dim_date-mm_dd_yyyy",
+          "alias": "dim_date-mm_dd_yyyy",
+          "aggregate": [
+            {
+              "func": "range",
+              "upper_bound": null,
+              "lower_bound": null
+            }
+          ],
+          "name": "Day"
+        },
+        {
+          "id": "calculation",
+          "calc": "sale+incentive+ppb",
+          "name": "Total Cost",
+          "vars": {
+            "cpc": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "CPC"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "ppb": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount-01",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "PPB"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "ncpc": {
+              "id": "fact_calculation-calculation_network_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_network_amount",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "CPC"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "nppb": {
+              "id": "fact_calculation-calculation_network_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_network_amount-01",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "PPB"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "sale": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount-02",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "COMMISSION",
+                    "FLATFEE",
+                    "ATTRIBUTED_COMMISSION"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "bonus": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount-03",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "BONUS"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "nsale": {
+              "id": "fact_calculation-calculation_network_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_network_amount-02",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "COMMISSION",
+                    "FLATFEE",
+                    "ATTRIBUTED_COMMISSION",
+                    "OTHERS"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "nbonus": {
+              "id": "fact_calculation-calculation_network_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_network_amount-03",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "BONUS"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "incentive": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount-04",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "INCENTIVE"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "adjustment": {
+              "id": "fact_calculation-calculation_attribution_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_attribution_amount-05",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "ADJUSTMENT",
+                    "ATTRIBUTED_ADJUSTMENT"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            },
+            "nadjustment": {
+              "id": "fact_calculation-calculation_network_amount",
+              "name": "Total Cost",
+              "alias": "fact_calculation-calculation_network_amount-04",
+              "aggregate": [
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_calculation_type-calculation_type_name",
+                  "values": [
+                    "ADJUSTMENT",
+                    "ATTRIBUTED_ADJUSTMENT"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "func": "filter",
+                  "field": "dim_source_type-source_type_code",
+                  "values": [
+                    "AVANTLINK",
+                    "BOTH"
+                  ]
+                },
+                {
+                  "func": "sum",
+                  "distinct": false
+                }
+              ],
+              "required_groups": [
+                "commission"
+              ],
+              "format": "money"
+            }
+          },
+          "alias": "total_commission",
+          "format": "money",
+          "fact": true
+        }
+      ],
+      "filters": [
+        {
+          "op": "relative_date",
+          "field": "dim_date-mm_dd_yyyy",
+          "period": "day",
+          "start": -1,
+          "count": 30,
+          "allow_empty": true,
+          "to_date": false
+        },
+        {
+          "field": "dim_merchant-merchant_uuid",
+          "op": "eq",
+          "values": [
+            "e295c418-295a-447c-b265-734e25f82503"
+          ]
+        }
+      ],
+      "totals": false,
+      "offset": 0,
+      "currency": "NATIVE",
+      "limit": 500,
+      "format": "json"
+    }
+  }
+}

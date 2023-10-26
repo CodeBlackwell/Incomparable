@@ -1,0 +1,33 @@
+{
+	"k9EuMT5IAAsVgeKxa": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72"
+		}, {
+			"prepared_id": "443af97f-53cd-491a-becb-de7954c3bf09"
+		}, {
+			"prepared_id": "c9ba8ae6-ce4c-4490-b8c3-6607dda92a0c"
+		}, {
+			"prepared_id": "2e6cd77b-d40d-47d9-a3c0-637d6cc904bc"
+		}],
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mm_dd_yyyy",
+			"period": "day",
+			"start": -1,
+			"count": 1,
+			"allow_empty": false,
+			"to_date": false
+		}],
+		"sort": [{
+			"field": "adjusted_network_earnings",
+			"direction": "desc",
+			"alias": "adjusted_network_earnings"
+		}],
+		"totals": false,
+		"offset": 0,
+		"currency": "USD",
+		"currency_tags": true,
+		"limit": 5,
+		"format": "json"
+	}
+}

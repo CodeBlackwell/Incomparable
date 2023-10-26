@@ -1,0 +1,39 @@
+{
+	"k9t6XddwakDspwn1d": {
+		"cols": [{
+			"id": "dim_merchant-merchant_network",
+			"alias": "dim_merchant-merchant_network",
+			"aggregate": [],
+			"name": "Merchant Network"
+		}, {
+			"id": "dim_date-mm_dd_yyyy",
+			"alias": "dim_date-mm_dd_yyyy",
+			"aggregate": [{
+				"func": "band",
+				"bands": null,
+				"dim": "dim_date-day_number_since_epoch"
+			}],
+			"name": "Mm Dd Yyyy"
+		}, {
+			"prepared_id": "e046db0a-777d-46e9-8eaf-6c4568781599"
+		}],
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mm_dd_yyyy",
+			"period": "day",
+			"start": -1,
+			"count": 1,
+			"allow_empty": true,
+			"to_date": false
+		}],
+		"sort": [{
+			"field": "dim_merchant-merchant_network",
+			"direction": "desc",
+			"alias": "dim_merchant-merchant_network"
+		}],
+		"offset": 0,
+		"currency": "USD",
+		"limit": 500,
+		"format": "json"
+	}
+}

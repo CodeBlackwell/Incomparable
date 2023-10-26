@@ -1,0 +1,36 @@
+{"JlmS8CWMoHRuVLag": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72"
+		}, {
+			"prepared_id": "9ff06246-c445-11ed-82ac-0a03c92855e7"
+		}, {
+			"prepared_id": "3056e403-5da8-40fc-897d-6558cc364de1"
+		}, {
+			"prepared_id": "f64178f2-959a-4639-94e8-200811ac7b2a"
+		}, {
+			"prepared_id": "1a8d2aac-998b-42fc-a221-6978de0da5c1"
+		}, {
+			"prepared_id": "5d3a0048-78c9-4601-b7d4-d7a09566d7c7"
+		}, {
+			"prepared_id": "c045f0b3-2e56-428b-a552-d256b22855a7"
+		}],
+		"report_name": "AvantMetrics Channel Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["04/01/2023", "04/01/2023"]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["e295c418-295a-447c-b265-734e25f82503"]
+		}],
+		"totals": true,
+		"offset": 0,
+		"widths": true,
+		"counts": true,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 24,
+		"partitionOffset": 0
+	}
+}

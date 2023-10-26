@@ -1,0 +1,107 @@
+{
+  "edw2_request_object": {
+	"top_five_widget": {
+		"cols": [{
+			"id": "dim_affiliate_default_website-affiliate_website_url_stripped",
+			"name": "Affiliate Default Website",
+			"alias": "affiliate_default_website0"
+		}, {
+			"id": "dim_date-mm_dd_yyyy",
+			"alias": "date_range",
+			"name": "Date Range",
+			"aggregate": [{
+				"func": "band",
+				"dim": "dim_date-last_thirty_days"
+			}]
+		}, {
+			"id": "dim_affiliate_default_website-affiliate_website_id",
+			"alias": "affiliate_default_website1",
+			"hidden": true
+		}, {
+			"id": "fact_hit-summary_hit_count",
+			"fact": true,
+			"name": "Clicks",
+			"alias": "number_of_clicks",
+			"format": "int"
+		}],
+		"report_name": "Custom Report",
+		"format": "json",
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mm_dd_yyyy",
+			"period": "day",
+			"start": -1,
+			"count": 30,
+			"allow_empty": true,
+			"to_date": false
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["e295c418-295a-447c-b265-734e25f82503"],
+			"alias": "merchant_filter1"
+		}],
+		"partitions": [],
+		"sort": [{
+			"field": "number_of_clicks",
+			"direction": "desc"
+		}],
+		"totals": true,
+		"widths": true,
+		"counts": true,
+		"partitionLimit": 1,
+		"offset": 0,
+		"limit": 10,
+		"partitionOffset": 0
+	}
+        },
+  "edw3_request_object": {
+	"kAkIWvWTx1v01b4LH": {
+		"cols": [{
+				"id": "dim_date-mm_dd_yyyy",
+				"alias": "dim_date-mm_dd_yyyy",
+				"aggregate": [{
+					"func": "band",
+					"bands": null,
+					"dim": "dim_date-last_thirty_days"
+				},
+                                {
+                                    "func": "all"
+                                }],
+				"name": "Mm Dd Yyyy"
+			},
+			{
+				"prepared_id": "d6e33659-669e-432b-8727-7c4f871011cb"
+			},
+			{
+				"id": "dim_affiliate-affiliate_uuid",
+				"alias": "dim_affiliate-affiliate_uuid",
+				"aggregate": [],
+				"name": "Affiliate Uuid",
+				"hidden": true
+			}
+		],
+		"filters": [{
+				"op": "relative_date",
+				"field": "dim_date-mm_dd_yyyy",
+				"period": "day",
+				"start": -1,
+				"count": 30,
+				"allow_empty": true,
+				"to_date": false
+			},
+			{
+				"field": "dim_merchant-merchant_uuid",
+				"op": "eq",
+				"values": [
+					"e295c418-295a-447c-b265-734e25f82503"
+				]
+			}
+		],
+		"totals": false,
+		"offset": 0,
+		"currency": "USD",
+		"limit": 10,
+		"format": "json"
+	}
+}
+}

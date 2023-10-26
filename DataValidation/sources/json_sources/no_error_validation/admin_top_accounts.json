@@ -1,0 +1,49 @@
+{
+	"kuWzgkn0rxRDvT6LF": {
+		"cols": [{
+			"prepared_id": "5aab673b-e77d-4744-a743-25a3f0d079db"
+		}, {
+			"id": "dim_merchant-merchant_name",
+			"alias": "dim_merchant-merchant_name",
+			"aggregate": [],
+			"name": "Merchant Name"
+		}, {
+			"id": "dim_merchant-merchant_uuid",
+			"alias": "dim_merchant-merchant_uuid",
+			"aggregate": [],
+			"name": "Merchant Uuid",
+			"hidden": true
+		}, {
+			"id": "dim_date-mm_dd_yyyy",
+			"alias": "dim_date-mm_dd_yyyy",
+			"aggregate": [{
+				"func": "band",
+				"bands": null,
+				"dim": "dim_date-day_number_since_epoch"
+			}],
+			"name": "Mm Dd Yyyy"
+		}],
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mm_dd_yyyy",
+			"period": "day",
+			"start": -1,
+			"count": 1,
+			"allow_empty": true,
+			"to_date": false
+		}],
+		"sort": [{
+			"field": "net_sales",
+			"direction": "desc",
+			"alias": "net_sales"
+		}, {
+			"field": "dim_merchant-merchant_name",
+			"direction": "asc",
+			"alias": "dim_merchant-merchant_name"
+		}],
+		"offset": 0,
+		"currency": "USD",
+		"limit": 10,
+		"format": "json"
+	}
+}

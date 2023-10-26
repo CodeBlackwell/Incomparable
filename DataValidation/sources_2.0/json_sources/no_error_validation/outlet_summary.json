@@ -1,0 +1,43 @@
+{
+	"PYw4Vi6PkniK3Ktj": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72"
+		}, {
+			"prepared_id": "aa2ea078-5bd7-4380-8ed1-03871c51a260"
+		}, {
+			"prepared_id": "7e9e9835-600c-42a9-aa38-6b5e08a2b9d7"
+		}, {
+			"prepared_id": "675ef884-0488-4610-8d7f-d3c292dde8a9"
+		}, {
+			"prepared_id": "9f69eab9-ea5d-4949-a390-816f4ec772a3"
+		}, {
+			"prepared_id": "0c89deb6-91c4-4484-82b4-42645b6c8cad"
+		}, {
+			"prepared_id": "4093139f-1729-47d0-8f45-e708f3078c2c"
+		}, {
+			"prepared_id": "6bdde606-ba23-4837-ab10-f12db387437a"
+		}, {
+			"prepared_id": "0a3d7ef9-9240-4d06-9083-3178f10b287b"
+		}, {
+			"prepared_id": "3392442b-324a-41a5-b9e6-bd7784b66104"
+		}],
+		"report_name": "REI Outlet Summary",
+		"filters": [{
+			"field": "fact_product_sales-store_name",
+			"op": "ne",
+			"values": [""]
+		}, {
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["01/01/2023", "01/01/2023"]
+		}],
+		"totals": true,
+		"offset": 0,
+		"widths": true,
+		"counts": true,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 22,
+		"partitionOffset": 0
+	}
+}

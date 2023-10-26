@@ -1,0 +1,40 @@
+{
+	"kaRHnaGp9NWpwILKq": {
+		"cols": [{
+			"id": "dim_merchant-merchant_network",
+			"alias": "dim_merchant-merchant_network",
+			"aggregate": [{
+				"func": "all"
+			}],
+			"name": "Merchant Network"
+		}, {
+			"prepared_id": "d6e33659-669e-432b-8727-7c4f871011cb"
+		}, {
+			"prepared_id": "5a1b9d70-1db3-4670-bb4e-6710dc6e736a"
+		}, {
+			"prepared_id": "5aab673b-e77d-4744-a743-25a3f0d079db"
+		}, {
+			"prepared_id": "32a9cf02-0375-494f-b196-ef976d283aed"
+		}],
+		"filters": [{
+			"op": "relative_date",
+			"field": "dim_date-mm_dd_yyyy",
+			"period": "day",
+			"start": -1,
+			"count": 1,
+			"allow_empty": false,
+			"to_date": false
+		}],
+		"sort": [{
+			"field": "dim_merchant-merchant_network",
+			"direction": "desc",
+			"alias": "dim_merchant-merchant_network"
+		}],
+		"totals": true,
+		"offset": 0,
+		"currency": "USD",
+		"currency_tags": true,
+		"limit": 500,
+		"format": "json"
+	}
+}

@@ -1,0 +1,73 @@
+{
+   "pCx3cIvHUnN9Z53Y":{
+      "cols":[
+         {
+            "prepared_id":"f8017c89-c326-48a9-a3cd-7362ab43eb95"
+         },
+         {
+            "prepared_id":"d6e33659-669e-432b-8727-7c4f871011cb"
+         },
+         {
+            "prepared_id":"5a1b9d70-1db3-4670-bb4e-6710dc6e736a"
+         },
+         {
+            "prepared_id":"5aab673b-e77d-4744-a743-25a3f0d079db"
+         },
+         {
+            "prepared_id":"7b9f9d22-c9ea-4407-a3d6-957619421a15"
+         },
+         {
+            "prepared_id":"32a9cf02-0375-494f-b196-ef976d283aed"
+         },
+         {
+            "prepared_id":"2d6b94d6-4bbe-4fc6-bb91-25f1b69cc0f2"
+         },
+         {
+            "prepared_id":"ef559898-c0d1-41d0-ad0b-25ae17040c14"
+         },
+         {
+            "prepared_id":"c045f0b3-2e56-428b-a552-d256b22855a7"
+         },
+         {
+            "prepared_id":"25d5dcb2-58e4-4951-9b48-2a8f63051068"
+         },
+         {
+            "prepared_id":"5b380868-fc08-4fdc-92d9-bbdef399c42a"
+         }
+      ],
+      "report_name":"Performance Summary By Affiliate",
+      "filters":[
+         {
+            "op": "relative_date",
+            "field": "dim_date-mm_dd_yyyy",
+            "period": "day",
+            "start": -1,
+            "count": 1,
+            "allow_empty": false,
+            "to_date": false
+         },
+         {
+            "field":"dim_merchant-merchant_uuid",
+            "op":"eq",
+            "values":[
+               "e295c418-295a-447c-b265-734e25f82503"
+            ]
+         }
+      ],
+      "sort":[
+         {
+            "field":"affiliate_default_website0",
+            "direction":"asc",
+            "alias":"affiliate_default_website0"
+         }
+      ],
+      "totals":true,
+      "offset":0,
+      "currency":"USD",
+      "limit":30,
+      "widths":true,
+      "counts":true,
+      "partitionLimit":4,
+      "partitionOffset":0
+   }
+}

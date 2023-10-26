@@ -1,0 +1,1408 @@
+mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}mYNi2tNcJJCQ": {
+		"cols": [{
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_name",
+			"name": "Merchant",
+			"alias": "merchant_name0"
+		}, {
+			"prepared_id": "1afbc775-cdd5-4a9b-bf48-c15629e5fae2",
+			"id": "fact_conversion-order_number",
+			"name": "Order Number",
+			"alias": "order_number",
+			"format": "string"
+		}, {
+			"prepared_id": "ac35e36c-41c9-4682-a269-98c71b8f2196",
+			"id": "fact_conversion-event_date_local",
+			"name": "Order Date",
+			"alias": "am_order_date"
+		}, {
+			"prepared_id": "6e8a104b-9c73-453c-b38d-06ba6a7ce6c2",
+			"id": "fact_conversion-event_action_amount",
+			"name": "Order Amount",
+			"alias": "am_order_amount",
+			"format": "money",
+			"fact": true
+		}, {
+			"prepared_id": "190e5ac1-620d-449f-99c3-01f2afd6aa71",
+			"id": "dim_pixel-tracked_pixel_name",
+			"name": "Awarded Channel",
+			"alias": "tracked_pixel_name"
+		}, {
+			"prepared_id": "c37cc7f0-4070-4534-affc-ee0a593e58eb",
+			"id": "dim_pixel-deduped_pixel_name",
+			"name": "Deduped Channel",
+			"alias": "deduped_pixel_name"
+		}, {
+			"prepared_id": "b42eab3e-cd74-4b0a-b70c-f6ca64c0ec72",
+			"id": "dim_merchant-merchant_uuid",
+			"name": "merchant_uuid",
+			"alias": "merchant_uuid",
+			"hidden": true
+		}],
+		"report_name": "AvantMetrics Deduplication Summary",
+		"filters": [{
+			"field": "dim_date-mm_dd_yyyy",
+			"op": "between",
+			"values": ["08/15/2023", "08/15/2023"]
+		}, {
+			"field": "fact_conversion-deduped_pixel_names",
+			"op": "ne",
+			"values": [null]
+		}, {
+			"field": "dim_merchant-merchant_uuid",
+			"op": "eq",
+			"values": ["b5770911-39dc-46ac-ba0f-b49dbb30c5c7"]
+		}],
+		"totals": true,
+		"offset": 30,
+		"widths": false,
+		"counts": false,
+		"currency": "USD",
+		"limit": 30,
+		"partitionLimit": 11,
+		"partitionOffset": 0,
+		"format": "json",
+		"partitions": [],
+		"sort": []
+	}
+}
