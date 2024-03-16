@@ -1,0 +1,150 @@
+{
+    "yesterday": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":-1,
+        "period":"day"
+     },
+     "today": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":0,
+        "period":"day"
+     },
+     "month to date": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":0,
+        "period":"month"
+     },
+     "quarter to date": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":0,
+        "period":"quarter"
+     },
+     "year to date": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":0,
+        "period":"year"
+     },
+     "last month": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":-1,
+        "period":"month"
+     },
+     "last quarter": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":-1,
+        "period":"quarter"
+     },
+     "last year": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":1,
+        "start":-1,
+        "period":"year"
+     },
+     "previous 7 days": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+           
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":7,
+        "start":-1,
+        "period":"day"
+     },
+     "previous 30 days": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+           
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":30,
+        "start":-1,
+        "period":"day"
+     },
+     "previous 3 months":  {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+           
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":3,
+        "start":-1,
+        "period":"month"
+     },
+     "previous 12 months": {
+        "field":"dim_date-mm_dd_yyyy",
+        "op":"relative_date",
+        "values":[
+           
+        ],
+        "alias":"date_picker1",
+        "allow_empty":true,
+        "to_date":false,
+        "count":12,
+        "start":-1,
+        "period":"month"
+     }
+}

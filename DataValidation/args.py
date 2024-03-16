@@ -28,4 +28,6 @@ parser.add_argument('-ul', '--update-logs', action="store_true", help="including
 parser.add_argument('-native', '--native', action="store_true", help="Including this option will force the test suite to use NATIVE currecny")
 parser.add_argument('-mm', '--multi-merchant', type=str,
                         help="The name of the merchants to run - use ',' to separate the merchant names")
+parser.add_argument('-rat', '--run_all_timeframes', action='store_true', 
+                    help="Generate and run reports for all timeframes")
 args = parser.parse_args()

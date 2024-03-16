@@ -624,9 +624,9 @@ class Cascade:
                             del request_filter
                             request_object[report_id]["filters"].append(intervals["last_year"])
 
-    async def dashboard_regression(self, categories=None, interval="last_month", sim=None, date_interval="Day",
+    async def dashboard_regression(self, categories=None, interval="last_month", sim=None,
                                    sem_count=None, merchants=None, merchant_name=None, should_update_logs=False,
-                                   source=None):
+                                   source=None, run_all_timeframes=False):
         if categories is None:
             categories = {
                 "trending_widget": {
@@ -727,38 +727,66 @@ class Cascade:
                                         if merchant_id:
                                             replace_merchant(edw2_request_object, merchant_id)
                                             replace_merchant(edw3_request_object, merchant_id)
-                                            # merchant_path = os.path.join(dir_basepath, merchant)
-                                            # try:
-                                            # #     os.mkdir(merchant_path)
-                                            # except FileExistsError:
-                                            #     pass
-                                            # print(f"{merchant_path} ----- 596, {merchant}")
-                                        comparison_col_name = col["name"]
-                                        merch_id = get_merchant_id(edw3_request_object)
-                                        lookup_merchant_name, merchant_network = search_merchant(merch_id=merch_id)
-                                        dashboard_regression = {"path": source_dir_path,
-                                                                "category": category,
-                                                                "dashboard report name": request_object_name,
-                                                                "merchant": lookup_merchant_name,
-                                                                "sim_name": sim_name,
-                                                                "source": source,
-                                                                "widget": widget
-                                                                }
 
-                                        match_names(edw2_request_object, edw3_request_object)
+                                        if run_all_timeframes:
+                                            relative_timeframes = json.load(open('./sources/json_sources/relative_time_filters.json'))
+                                            edw2_request_object_variations = generate_report_date_variations(edw2_request_object, relative_timeframes)
+                                            edw3_request_object_variations = generate_report_date_variations(edw3_request_object, relative_timeframes)
+                                            for timeframe in relative_timeframes:
+                                                print(f"running {widget} - {category} - {request_object_name} - {timeframe}")
+                                                comparison_col_name = col["name"]
+                                                merch_id = get_merchant_id(edw3_request_object_variations[timeframe])
+                                                lookup_merchant_name, merchant_network = search_merchant(merch_id=merch_id)
+                                                dashboard_regression = {"path": source_dir_path,
+                                                                        "category": category,
+                                                                        "dashboard report name": request_object_name,
+                                                                        "merchant": lookup_merchant_name,
+                                                                        "sim_name": sim_name,
+                                                                        "source": source,
+                                                                        "widget": widget
+                                                                        }
 
-                                        # NOTE: Because we don't apply the exact same date aggregates here anymore these must be commented out
-                                        # These might still be needed for other date ranges, but for now that isnt important
-                                        #verify_relative_dates(edw2_request_object, edw3_request_object)
-                                        #match_date_aggregates(edw2_request_object, edw3_request_object)
-                                        futures.append(self.run_simple_difference(
-                                            {"join_on": define_join_on(edw2_request_object, edw3_request_object),
-                                            "comparison_col_name": comparison_col_name},
-                                            edw2_ro=edw2_request_object, edw3_ro=edw3_request_object,
-                                            interval=interval, sim=sim_name, source=source,
-                                            report_name=comparison_col_name, dashboard_regression=dashboard_regression,
-                                            merchant_network=merchant_network)
-                                        )
+                                                match_names(edw2_request_object_variations[timeframe], edw3_request_object_variations[timeframe])
+
+                                                # NOTE: Because we don't apply the exact same date aggregates here anymore these must be commented out
+                                                # These might still be needed for other date ranges, but for now that isnt important
+                                                #verify_relative_dates(edw2_request_object, edw3_request_object)
+                                                #match_date_aggregates(edw2_request_object, edw3_request_object)
+                                                futures.append(self.run_simple_difference(
+                                                    {"join_on": define_join_on(edw2_request_object_variations[timeframe], edw3_request_object_variations[timeframe]),
+                                                    "comparison_col_name": comparison_col_name},
+                                                    edw2_ro=edw2_request_object_variations[timeframe], edw3_ro=edw3_request_object_variations[timeframe],
+                                                    interval=interval, sim=sim_name, source=source,
+                                                    report_name=comparison_col_name, dashboard_regression=dashboard_regression,
+                                                    merchant_network=merchant_network)
+                                                )
+                                        else:
+                                                comparison_col_name = col["name"]
+                                                merch_id = get_merchant_id(edw3_request_object)
+                                                lookup_merchant_name, merchant_network = search_merchant(merch_id=merch_id)
+                                                dashboard_regression = {"path": source_dir_path,
+                                                                        "category": category,
+                                                                        "dashboard report name": request_object_name,
+                                                                        "merchant": lookup_merchant_name,
+                                                                        "sim_name": sim_name,
+                                                                        "source": source,
+                                                                        "widget": widget
+                                                                        }
+
+                                                match_names(edw2_request_object, edw3_request_object)
+
+                                                # NOTE: Because we don't apply the exact same date aggregates here anymore these must be commented out
+                                                # These might still be needed for other date ranges, but for now that isnt important
+                                                #verify_relative_dates(edw2_request_object, edw3_request_object)
+                                                #match_date_aggregates(edw2_request_object, edw3_request_object)
+                                                futures.append(self.run_simple_difference(
+                                                    {"join_on": define_join_on(edw2_request_object, edw3_request_object),
+                                                    "comparison_col_name": comparison_col_name},
+                                                    edw2_ro=edw2_request_object, edw3_ro=edw3_request_object,
+                                                    interval=interval, sim=sim_name, source=source,
+                                                    report_name=comparison_col_name, dashboard_regression=dashboard_regression,
+                                                    merchant_network=merchant_network)
+                                                )
 
             result = await asyncio.gather(*futures)
             # self.create_change_log(result, sim_name)
@@ -1252,6 +1280,27 @@ def define_join_on(ro1, ro2):
     return join_on
 
 
+def generate_report_date_variations(dashboard_dict, timeframes):
+    """
+    Given a dashboard dictionary, and dictionary of timeframes,
+    generate variations of the dashboard dictionary for each timeframe.
+    """
+    timeframed_copies = {}
+    for timeframe in timeframes:
+        # Create a deep copy of the dashboard dictionary
+        dashboard_dict_copy = copy.deepcopy(dashboard_dict)
+        report_key = list(dashboard_dict_copy.keys())[0]
+        filters = dashboard_dict_copy[report_key]["filters"]
+
+        for filter_dict in filters:
+            if filter_dict['op'] == 'relative_date':
+                # Update the properties of the filter with the properties of the timeframe
+                filter_dict.update(timeframes[timeframe])
+
+        timeframed_copies[timeframe] = dashboard_dict_copy
+
+    return timeframed_copies
+
 def main():
     # Define comparison column name and join_on vars here
 
@@ -1274,7 +1323,6 @@ def main():
     sim = args.sim or None
 
     if args.no_error:
-
         loop = asyncio.new_event_loop()
         try:
             start = datetime.now()
@@ -1302,7 +1350,7 @@ def main():
         # edw3_ro = cascade.process_prepared_ids(request_objects["edw3_request_object"])
         edw2_ro = request_objects["edw2_request_object"]
         edw3_ro = request_objects["edw3_request_object"]
-
+        
         source = args.source or None
         if args.join:
             join_on = args.join.split(',')
@@ -1377,7 +1425,6 @@ def main():
             "trending_widget": False,
             "top_affiliates_widget": False
         }
-
         # Add source if specified
         if args.source:
             source = args.source
@@ -1400,12 +1447,14 @@ def main():
             loop = asyncio.new_event_loop()
             merchants = None
             merchant_name = None
+            run_all_timeframes = False
             if args.multi_merchant:
                 merchants = args.multi_merchant.split(',')
                 merchants = [col_name.strip() for col_name in merchants]
             if args.merchant:
                 merchant_name = args.merchant
-
+            if args.run_all_timeframes:
+                run_all_timeframes = True
             try:
                 start = datetime.now()
                 # code ...
@@ -1413,7 +1462,8 @@ def main():
                     cascade.dashboard_regression(categories=run_categories, interval="last month",
                                                  sem_count=3, sim=sim, source=source, merchants=merchants,
                                                  merchant_name=merchant_name,
-                                                 should_update_logs=should_update_logs)
+                                                 should_update_logs=should_update_logs,
+                                                 run_all_timeframes=run_all_timeframes)
                 )
             except KeyboardInterrupt:
                 sys.exit()

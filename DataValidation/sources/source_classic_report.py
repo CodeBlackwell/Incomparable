@@ -22,8 +22,8 @@ class ClassicReport(SourceBase):
         self.url = self.constant.classic_url
         self.module = self.constant.module
         self.report_id = report_id
-        self.begin = (self.yesterday(), begin)[begin]
-        self.end = (self.today(), end)[end]
+        self.begin = begin if begin else self.yesterday()
+        self.end = end if end else self.today()
         self.params = kwargs
 
 
@@ -50,7 +50,9 @@ class ClassicReport(SourceBase):
         }
         query_string = query_string + urllib.parse.urlencode(params)
         r = await client.get(query_string)
+        print(r.text)
         headers, data = self.interpret_csv(r.text)
 
         data = np.array(data)
         self.data = pd.DataFrame(data, columns=headers)
+        return 

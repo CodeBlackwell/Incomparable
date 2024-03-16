@@ -28,7 +28,7 @@ class AvantMetricsComparison:
     def __init__(self, report_name, reports):
         self.report_name = report_name
         self.reports = reports
-        # self.performance_report_request_objects = json.load(open('DataValidation/sources//performance_report_request_objects.json'))
+        self.performance_report_request_objects = json.load(open('./sources/json_sources/avm_performance_request_objects.json'))
 
     @staticmethod
     def __convert_date_range_for_classic__(date_range):
@@ -93,9 +93,6 @@ class AvantMetricsComparison:
     def fetch_picker_report(self, request, picker_version="EDW3"):
         # Fetch the report from the EDW3 system
         pass
-
-
-
 
     async def get_prepared_cols(self):
         client = http3.AsyncClient()
