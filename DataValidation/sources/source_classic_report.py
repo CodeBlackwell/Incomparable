@@ -50,9 +50,12 @@ class ClassicReport(SourceBase):
         }
         query_string = query_string + urllib.parse.urlencode(params)
         r = await client.get(query_string)
-        print(r.text)
         headers, data = self.interpret_csv(r.text)
-
-        data = np.array(data)
-        self.data = pd.DataFrame(data, columns=headers)
-        return 
+    
+        if not data:  # Checking if data is empty
+            print("No data returned from the source.")
+            return None  # Or handle it as per your application's requirement
+        else:
+            self.data = pd.DataFrame(data, columns=headers)
+            data = np.array(data)
+            return data

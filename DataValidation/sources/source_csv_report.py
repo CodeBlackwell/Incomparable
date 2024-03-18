@@ -1,11 +1,14 @@
 from sources.base import SourceBase
 import pandas as pd
 import numpy as np
+import os
+import sys
 
 
 class CSVReport(SourceBase):
     report_name = None
     report_location: None
+    data = None
 
     def __init__(self, location, **kwargs):
         super().__init__(**kwargs)

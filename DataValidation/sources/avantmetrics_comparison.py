@@ -90,6 +90,12 @@ class AvantMetricsComparison:
         classic_request = sources.ClassicReport(params)
         return await classic_request.request()
 
+    def fetch_csv_report(self, location):
+        csv_report = sources.CSVReport(location)
+        csv_report.load()
+        self.reports.append(csv_report)
+        return csv_report.data
+    
     def fetch_picker_report(self, request, picker_version="EDW3"):
         # Fetch the report from the EDW3 system
         pass
@@ -108,7 +114,7 @@ class AvantMetricsComparison:
 
         # Catch timeouts from the API here
         try:
-            response = await client.get('https://picker-shard.avantlink.com/prepared_cols', headers=headers, timeout=30)
+            response = await client.get('https://picker-shard.avantlink.com/prepared_cols', headers=headers, timeout=3000000)
         except http3.exceptions.ReadTimeout:
             self.timeout = True
             return
@@ -132,10 +138,15 @@ class AvantMetricsComparison:
 async def main():
     comparison = AvantMetricsComparison(report_name="Your Report Name", reports=[])
     report_id = 8
-    date_range = "11/01/2024 - 11/30/2024"
+    date_range = "11/01/2023 - 11/30/2023"
     merchant_id = 10008
-    report_data = await comparison.fetch_classic_report2(report_id, date_range, mi=merchant_id)
-    print(report_data)
+    edw3_report_location = 'file://./sources/json_sources/EDW3_RGOD_Nov2023_CampSaver_com.csv'
+    edw2_report_location = 'file://./sources/json_sources/EDW2_RGOD_Nov2023_CampSaver_com.csv'
+    classic_report_location = 'file://./sources/json_sources/Classic_RGOD_Nov2023_CampSaver_com.csv'
+    comparison.fetch_csv_report(edw3_report_location)
+    print(comparison.reports[0].data)
+    # report_data = await comparison.fetch_classic_report2(report_id, date_range, mi=merchant_id)
+    # print(report_data)
 
 if __name__ == '__main__':
     asyncio.run(main())
