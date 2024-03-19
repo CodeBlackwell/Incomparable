@@ -45,60 +45,40 @@ class AvantMetricsComparison:
     def adjust_dates():
         # Adjust the dates of EDW2 or EDW3 reports
         pass
+    @staticmethod
+    def replace_merchant(ro, merchant_id):
+        for report_id in ro:
+            for filter in ro[report_id]["filters"]:
+                if filter["field"] == "dim_merchant-merchant_uuid":
+                    new_filter = {
+                        "field": "dim_merchant-merchant_uuid",
+                        "op": "eq",
+                        "values": [
+                            f"{merchant_id}"
+                        ],
+                        "alias": "merchant_filter1"
+                    }
+                    del filter
+                    ro[report_id]["filters"].append(new_filter)
 
     def convert_edw2_avantmetrics_request(self, request, report_name):
         # Convert the request to the format that AvantMetrics API expects
         pass
 
-    async def fetch_classic_report2(self, report_id, date_range, **kwargs):
+    async def fetch_classic_report(self, report_id, date_range, **kwargs):
         date_begin, date_end = date_range.split(' - ')
         classic_report = sources.ClassicReport(report_id, begin=date_begin, end=date_end, **kwargs)
         return await classic_report.request()
 
-    async def fetch_classic_report(self,
-            report_id,
-            date_range,
-            merchant_id,
-            merchant_parent="0",
-            merchant_group="0",
-            custom_tracking_code="",
-            search_affiliates="All Affiliates"
-    ):
-        RSD, RSM, RSY, RED, REM, REY = self.__convert_date_range_for_classic__(date_range)
-        params = {
-            "mp":merchant_parent,
-            "mi":merchant_id, #10008
-            "cmg":merchant_group,
-            "r":report_id, #8
-            "search_affiliates":search_affiliates,
-            "p":"0",
-            "cpg":"0",
-            "d":"",
-            "rsd":{
-                "F":RSM,
-                "d":RSD,
-                "Y":RSY
-                },
-            "red":{
-                "F":REM,
-                "d":RED,
-                "Y":REY
-                },
-                "ctc":custom_tracking_code,
-                "go":"Select Report"
-            }
-        classic_request = sources.ClassicReport(params)
-        return await classic_request.request()
-
-    def fetch_csv_report(self, location):
-        csv_report = sources.CSVReport(location)
-        csv_report.load()
-        self.reports.append(csv_report)
-        return csv_report.data
-    
-    def fetch_picker_report(self, request, picker_version="EDW3"):
+    async def fetch_picker_report(self, request, picker_version="EDW3"):
         # Fetch the report from the EDW3 system
         pass
+
+    def fetch_csv_report(self, location):
+            csv_report = sources.CSVReport(location)
+            csv_report.load()
+            self.reports.append(csv_report)
+            return csv_report.data
 
     async def get_prepared_cols(self):
         client = http3.AsyncClient()
@@ -120,7 +100,6 @@ class AvantMetricsComparison:
             return
         self.prepared_col_map = response.json()
         return response
-
 
     def compare_reports(self):
         # Compare the * reports
@@ -148,7 +127,7 @@ async def main():
     # comparison.fetch_csv_report(classic_report_location)
 
     # print(comparison.reports[0].data)
-    report_data = await comparison.fetch_classic_report2(report_id, date_range, mi=merchant_id)
+    report_data = await comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
     print(report_data)
 
 if __name__ == '__main__':
