@@ -138,15 +138,18 @@ class AvantMetricsComparison:
 async def main():
     comparison = AvantMetricsComparison(report_name="Your Report Name", reports=[])
     report_id = 8
-    date_range = "11/01/2023 - 11/30/2023"
+    date_range = "11/01/2023 - 11/02/2023"
     merchant_id = 10008
     edw3_report_location = 'file://./sources/json_sources/EDW3_RGOD_Nov2023_CampSaver_com.csv'
     edw2_report_location = 'file://./sources/json_sources/EDW2_RGOD_Nov2023_CampSaver_com.csv'
     classic_report_location = 'file://./sources/json_sources/Classic_RGOD_Nov2023_CampSaver_com.csv'
-    comparison.fetch_csv_report(edw3_report_location)
-    print(comparison.reports[0].data)
-    # report_data = await comparison.fetch_classic_report2(report_id, date_range, mi=merchant_id)
-    # print(report_data)
+    # comparison.fetch_csv_report(edw3_report_location)
+    # comparison.fetch_csv_report(edw2_report_location)
+    # comparison.fetch_csv_report(classic_report_location)
+
+    # print(comparison.reports[0].data)
+    report_data = await comparison.fetch_classic_report2(report_id, date_range, mi=merchant_id)
+    print(report_data)
 
 if __name__ == '__main__':
     asyncio.run(main())

@@ -235,6 +235,13 @@ def build_file_list():
     output_dir = 'DataValidation/validation_outputs/xlsx/'
     file_list = []
 
+    # If the output dir doesn't exist, make it for the user
+    # However, the regression lib won't have files. Notify for a rerurn with an error
+    if not os.path.exists(output_dir):
+       os.mkdir('DataValidation/validation_outputs')
+       os.mkdir(output_dir)
+       raise Exception('The output directory for the data files was not present. This has been made for you, but a rerun is neccessary to generate files')
+
     # Walk the data directory and grab all output files (not dirs)
     for root, dirs, files in os.walk(output_dir):
         for name in files:
@@ -493,7 +500,10 @@ if __name__ == "__main__":
                     else:
                         for json_dict in json_dicts:
                             post_to_slack(channel, msg, None, merchant, source.source, timeout=timeout, js=json_dict, fail_channel=fail_channel)
-                    os.remove(test_file)
+                    try:
+                        os.remove(test_file)
+                    except:
+                        raise Exception('Test suite file is missing! Check file generator')
 
                 # Routine data validation
                 # Post each result to Slack with a pass/fail message

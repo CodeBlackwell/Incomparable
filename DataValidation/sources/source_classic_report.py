@@ -49,7 +49,7 @@ class ClassicReport(SourceBase):
             "date_end": self.end
         }
         query_string = query_string + urllib.parse.urlencode(params)
-        r = await client.get(query_string)
+        r = await client.get(query_string, timeout=300000)
         headers, data = self.interpret_csv(r.text)
     
         if not data:  # Checking if data is empty
