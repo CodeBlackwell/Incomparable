@@ -9,4 +9,5 @@ from .semaphore_methods import run_cascade
 from .semaphore_methods import simple_comparison
 from .comparison import Cascade
 from .dashboard_objects import dashboard_objects
+from .avantmetrics_comparison import AvantMetricsComparison
 from .logs import update_log

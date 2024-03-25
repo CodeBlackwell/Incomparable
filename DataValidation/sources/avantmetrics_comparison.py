@@ -11,6 +11,7 @@ import re
 import sys
 import sources
 import http3
+import copy
 
 from compare_reports import Comparison
 
@@ -21,6 +22,7 @@ class AvantMetricsComparison:
     report_name = ''
     reports = []
     prepared_col_map = {}
+    performance_report_request_objects = {}
     edw2_url = 'https://picker-dev.avantlink.com/rpt?timeout=2800000'
     edw3_url = 'https://picker-shard.avantlink.com/rpt?timeout=2800000'
 
@@ -42,43 +44,36 @@ class AvantMetricsComparison:
         return (start_day, start_month, start_year, end_day, end_month, end_year)
 
     @staticmethod
-    def adjust_dates():
-        # Adjust the dates of EDW2 or EDW3 reports
-        pass
+    def search_merchant(environment, merchant_name=None, merch_id=None):
+        if environment.lower() == 'EDW2'.lower() or environment.lower() == 'EDW3'.lower():
+            merchant_map = json.load(open('./sources/json_sources/merchant_map.json'))
+            # Remove "_ from merchant passed as argument"
+            if merchant_name:
+                if "_" in merchant_name:
+                    merchant_name = merchant_name.replace("_", " ")
+                for merchant_id in merchant_map:
+                    if merchant_map[merchant_id][0]["merchant_name"].lower() == merchant_name.lower():
+                        return merchant_id, merchant_map[merchant_id][1]["merchant_network"]
+            if merch_id:
+                return merchant_map[merch_id][0]["merchant_name"], merchant_map[merch_id][1]["merchant_network"]
+
+
     @staticmethod
-    def replace_merchant(ro, merchant_id):
-        for report_id in ro:
-            for filter in ro[report_id]["filters"]:
-                if filter["field"] == "dim_merchant-merchant_uuid":
-                    new_filter = {
-                        "field": "dim_merchant-merchant_uuid",
-                        "op": "eq",
-                        "values": [
-                            f"{merchant_id}"
-                        ],
-                        "alias": "merchant_filter1"
-                    }
-                    del filter
-                    ro[report_id]["filters"].append(new_filter)
-
-    def convert_edw2_avantmetrics_request(self, request, report_name):
-        # Convert the request to the format that AvantMetrics API expects
-        pass
-
-    async def fetch_classic_report(self, report_id, date_range, **kwargs):
-        date_begin, date_end = date_range.split(' - ')
-        classic_report = sources.ClassicReport(report_id, begin=date_begin, end=date_end, **kwargs)
-        return await classic_report.request()
-
-    async def fetch_picker_report(self, request, picker_version="EDW3"):
-        # Fetch the report from the EDW3 system
-        pass
-
-    def fetch_csv_report(self, location):
-            csv_report = sources.CSVReport(location)
-            csv_report.load()
-            self.reports.append(csv_report)
-            return csv_report.data
+    def replace_merchant(ro, merchant_id, environment):
+        if environment.lower() == 'EDW2'.lower() or environment.lower() == 'EDW3'.lower():
+            for report_id in ro:
+                for filter in ro[report_id]["filters"]:
+                    if filter["field"] == "dim_merchant-merchant_uuid":
+                        new_filter = {
+                            "field": "dim_merchant-merchant_uuid",
+                            "op": "eq",
+                            "values": [
+                                f"{merchant_id}"
+                            ],
+                            "alias": "merchant_filter1"
+                        }
+                        del filter
+                        ro[report_id]["filters"].append(new_filter)
 
     async def get_prepared_cols(self):
         client = http3.AsyncClient()
@@ -101,6 +96,55 @@ class AvantMetricsComparison:
         self.prepared_col_map = response.json()
         return response
 
+    def __retrieve_request_object__(self, type, report_name, environment):
+        if type == 'performance':
+            return self.performance_report_request_objects[environment.lower()][report_name]
+         
+
+    def insert_edw2_avantmetrics_request_filters(self, request_object):
+        # Inject filters for "Multiple Affilliates != 'N/A'" and "Is Affiliate Order == 'Yes'"
+        report_key = request_object.keys()[0]
+        true = True
+        filters = [{
+               "op":"eq",
+               "field":"is_affiliate_order",
+               "values":[
+                  "Yes"
+               ],
+               "case_insensitive":true
+            },
+            {
+               "op":"ne",
+               "field":"has_multiple_affiliates",
+               "values":[
+                  "N/A"
+               ],
+               "case_insensitive":true
+            }]
+        
+        new_request_object = copy.deepcopy(request_object)
+        new_request_object[report_key]['filters'].append(filters)
+        return new_request_object
+
+    async def fetch_classic_report(self, report_id, date_range, **kwargs):
+        date_begin, date_end = date_range.split(' - ')
+        classic_report = sources.ClassicReport(report_id, begin=date_begin, end=date_end, **kwargs)
+        return await classic_report.request()
+
+    async def fetch_picker_report(self, request_object, environment):
+        if environment == 'EDW2':
+            picker_url = self.edw2_url
+        elif environment == 'EDW3':
+            picker_url = self.edw3_url
+        picker_report = sources.PickerReport(
+            picker_url = picker_url,
+            report_name = self.report_name,
+            request_object = request_object
+        )
+        await picker_report.load()
+        self.reports.append(picker_report)
+        return picker_report
+
     def compare_reports(self):
         # Compare the * reports
         pass
@@ -115,20 +159,24 @@ class AvantMetricsComparison:
 
 
 async def main():
-    comparison = AvantMetricsComparison(report_name="Your Report Name", reports=[])
+    comparison = AvantMetricsComparison(report_name="Referral Group Order Details", reports=[])
     report_id = 8
     date_range = "11/01/2023 - 11/02/2023"
     merchant_id = 10008
-    edw3_report_location = 'file://./sources/json_sources/EDW3_RGOD_Nov2023_CampSaver_com.csv'
-    edw2_report_location = 'file://./sources/json_sources/EDW2_RGOD_Nov2023_CampSaver_com.csv'
+    edw3_report_location =    'file://./sources/json_sources/EDW3_RGOD_Nov2023_CampSaver_com.csv'
+    edw2_report_location =    'file://./sources/json_sources/EDW2_RGOD_Nov2023_CampSaver_com.csv'
     classic_report_location = 'file://./sources/json_sources/Classic_RGOD_Nov2023_CampSaver_com.csv'
-    # comparison.fetch_csv_report(edw3_report_location)
-    # comparison.fetch_csv_report(edw2_report_location)
-    # comparison.fetch_csv_report(classic_report_location)
+    comparison.fetch_csv_report(edw3_report_location, 'edw3')
+    # comparison.fetch_csv_report(edw2_report_location, 'edw2')
+    # comparison.fetch_csv_report(classic_report_location, 'classic')
 
-    # print(comparison.reports[0].data)
-    report_data = await comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
-    print(report_data)
+
+    for report in comparison.reports:
+        print(report.report_environment)
+        print(len(report.data))
+        # print(report.data)
+    # report_data = await comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
+    # print(report_data)
 
 if __name__ == '__main__':
     asyncio.run(main())

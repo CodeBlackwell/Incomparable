@@ -196,18 +196,12 @@ class Comparison(KnownDiscrepancies):
                                      index=range((~self.reports[0].orphans['is_orphan']).sum())).fillna(False)
         edw3_df = self.reports[0].data
         edw2_df = self.reports[1].data
+        try:
+            # Exception for CSV reports
+            edw3_sql = self.reports[0].report["_queries"]
+        except:
+            pass
 
-        # Iterate through the columns of the EDW2 dataset
-        for column in edw2_df.columns:
-            # Check if there are any negative numbers in the current column
-            try:
-                if (int(edw2_df[column]) < 0).any():
-                    # Drop rows with '0' value in the corresponding column of the EDW3 dataset
-                    edw3_df = edw3_df[edw3_df[column] != '0']
-            except TypeError:
-                continue # Do nothing
-
-        edw3_sql = self.reports[0].report["_queries"]
         data_source = self.sql_validation(edw3_sql)
 
         edw3_ro = json.dumps(self.reports[0].request_object)
@@ -328,7 +322,7 @@ class Comparison(KnownDiscrepancies):
             # Set pass/fail criteria here
             # If everything is 0 in both arrays, call it a special case pass
             flag = 'PASS!'
-            if np.all(merge[col_x].values == 0) and np.all(merge[col_y].values == 0):
+            if np.all(merge[col_x].values == 0) and np.all(merge[col_y].values == 0): 
                 flag = 'PASS! ALL ZEROS!'
             else:
                 for num in merge['difference'].values:
@@ -397,6 +391,7 @@ class Comparison(KnownDiscrepancies):
             merge["SQL_source"] = data_source
             merge['edw2_request_object'] = edw2_ro
             merge['edw3_request_object'] = edw3_ro
+            merge.drop('Runtime', axis=1)
             self.merge = merge
             merge.to_excel(filepath)
 

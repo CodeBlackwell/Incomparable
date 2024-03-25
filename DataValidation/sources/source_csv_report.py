@@ -8,14 +8,17 @@ import sys
 class CSVReport(SourceBase):
     report_name = None
     report_location: None
+    report_environment = None
+    report_source = 'CSV'
     data = None
 
-    def __init__(self, location, **kwargs):
+    def __init__(self, location, report_environment, **kwargs):
         super().__init__(**kwargs)
         self.reset()
         if self.report_name is None:
             self.report_name = self.safe_name(location)
         self.report_location = location
+        self.report_environment = report_environment
 
     def reset(self):
         self.report_name = ''
