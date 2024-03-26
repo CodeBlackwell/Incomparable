@@ -30,14 +30,14 @@ class AvantMetricsComparison:
     def __init__(self, report_name, reports):
         self.report_name = report_name
         self.reports = reports
-        self.performance_report_request_objects = json.load(open('./sources/json_sources/avm_performance_request_objects.json'))
-
+        with open('./sources/json_sources/avm_performance_request_objects.json') as f:
+            self.performance_report_request_objects = json.load(f)
+    
     @staticmethod
     def __convert_date_range_for_classic__(date_range):
         # Convert the date range to the format that the classic system expects
         # Give the date range in the format of "MM/DD/YYYY - MM/DD/YYYY"
         # return a 6 part tuple of the format (start_day, start_month, start_year, end_day, end_month, end_year)
-
         start_date, end_date = date_range.split(' - ')
         start_month, start_day, start_year = start_date.split('/')
         end_month, end_day, end_year = end_date.split('/')
@@ -57,7 +57,6 @@ class AvantMetricsComparison:
             if merch_id:
                 return merchant_map[merch_id][0]["merchant_name"], merchant_map[merch_id][1]["merchant_network"]
 
-
     @staticmethod
     def replace_merchant(ro, merchant_id, environment):
         if environment.lower() == 'EDW2'.lower() or environment.lower() == 'EDW3'.lower():
@@ -74,6 +73,12 @@ class AvantMetricsComparison:
                         }
                         del filter
                         ro[report_id]["filters"].append(new_filter)
+
+    def fetch_csv_report(self, location):
+            csv_report = sources.CSVReport(location)
+            csv_report.load()
+            self.reports.append(csv_report)
+            return csv_report.data
 
     async def get_prepared_cols(self):
         client = http3.AsyncClient()
@@ -139,14 +144,28 @@ class AvantMetricsComparison:
         picker_report = sources.PickerReport(
             picker_url = picker_url,
             report_name = self.report_name,
-            request_object = request_object
+            request_object = request_object,
+            request_type = environment.lower()
         )
         await picker_report.load()
         self.reports.append(picker_report)
+
+        
         return picker_report
+    
+    async def async_comparison_wrapper(self, request_object, name):
+        comparison = Comparison(
+            sources.PickerReport(picker_url=self.edw3_url,
+                                 report_name=name,
+                                 request_object=request_object,
+                                 request_type='edw3')
+        )
+
+        test_result = await comparison.run_and_barf()
+        return test_result
 
     def compare_reports(self):
-        # Compare the * reports
+        # Compare the performance_reports
         pass
 
     def compare_website_order_details(self):
@@ -166,7 +185,7 @@ async def main():
     edw3_report_location =    'file://./sources/json_sources/EDW3_RGOD_Nov2023_CampSaver_com.csv'
     edw2_report_location =    'file://./sources/json_sources/EDW2_RGOD_Nov2023_CampSaver_com.csv'
     classic_report_location = 'file://./sources/json_sources/Classic_RGOD_Nov2023_CampSaver_com.csv'
-    comparison.fetch_csv_report(edw3_report_location, 'edw3')
+    # comparison.fetch_csv_report(edw3_report_location, 'edw3')
     # comparison.fetch_csv_report(edw2_report_location, 'edw2')
     # comparison.fetch_csv_report(classic_report_location, 'classic')
 
@@ -175,8 +194,12 @@ async def main():
         print(report.report_environment)
         print(len(report.data))
         # print(report.data)
-    # report_data = await comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
+    report_data = await comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
     # print(report_data)
+    edw3_env = 'EDW3'
+    edw3_request_object = comparison.__retrieve_request_object__('performance', 'Referral Group Order Details', edw3_env)
+    edw3_picker_report_data = await comparison.async_comparison_wrapper(edw3_request_object, 'Referral Group Order Details')
+    print(edw3_picker_report_data.data)
 
 if __name__ == '__main__':
     asyncio.run(main())

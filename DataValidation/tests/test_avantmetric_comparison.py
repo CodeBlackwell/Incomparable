@@ -1,5 +1,6 @@
 import unittest
 from sources import AvantMetricsComparison
+import asyncio
 
 class TestAvantMetricsComparison(unittest.TestCase):
     def setUp(self):
@@ -17,10 +18,6 @@ class TestAvantMetricsComparison(unittest.TestCase):
         result = AvantMetricsComparison.__convert_date_range_for_classic__("01/01/2023 - 01/02/2023")
         self.assertEqual(result, ("01", "01", "2023", "02", "01", "2023"))
         # Add more assertions as needed
-
-    def test_convert_date_range_for_classic(self):
-        # Test the __convert_date_range_for_classic__ method
-        pass
 
     def test_search_merchant(self):
         # Test the search_merchant method
@@ -43,8 +40,22 @@ class TestAvantMetricsComparison(unittest.TestCase):
         pass
 
     def test_fetch_classic_report(self):
-        # Test the fetch_classic_report method
-        pass
+        # Create a new event loop
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        report_id = 8
+        date_range = "11/01/2023 - 11/02/2023"
+        merchant_id = 10008
+        # Run the coroutine
+        result = loop.run_until_complete(
+            self.comparison.fetch_classic_report(report_id, date_range, mi=merchant_id)
+            )
+        
+        # Your assertions here
+        self.assertEqual(len(result), 27997)
+        
+        # Close the loop
+        loop.close()
 
     def test_fetch_picker_report(self):
         # Test the fetch_picker_report method

@@ -30,4 +30,4 @@ parser.add_argument('-mm', '--multi-merchant', type=str,
                         help="The name of the merchants to run - use ',' to separate the merchant names")
 parser.add_argument('-rat', '--run_all_timeframes', action='store_true', 
                     help="Generate and run reports for all timeframes")
-args = parser.parse_args()
+args, unknown = parser.parse_known_args()
